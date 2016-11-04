@@ -4,9 +4,19 @@
 #include "TankPlayerController.h"
 
 
-
+void ATankPlayerController::BeginPlay() {
+	Super::BeginPlay();
+	ATank* player = getTank();
+	if (player) {
+		UE_LOG(LogTemp, Warning, TEXT("Tank Player Controller begin play %s"), *player->GetName());
+	}
+	else {
+		UE_LOG(LogTemp, Warning, TEXT("Got null player tank."));
+	}
+	
+}
 
 ATank* ATankPlayerController::getTank() {
 
-	return (ATank*)GetPawn();
+	return Cast<ATank>(GetPawn());
 }
