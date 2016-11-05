@@ -22,8 +22,8 @@ private:
 private:
 	void BeginPlay() override;
 	void Tick(float) override;
-	ATank* GetTank();
+	ATank* GetTank() const;
 	void AimTowardsCrosshair();
-	bool GetSightRayLocation(FVector2D&);
-	
+	bool GetSightRayLocation(FVector&) const;
+	bool GetLookDirection(FVector2D, FVector&) const;
 };

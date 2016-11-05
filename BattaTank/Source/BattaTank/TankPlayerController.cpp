@@ -21,7 +21,7 @@ void ATankPlayerController::Tick(float DeltaTime) {
 	AimTowardsCrosshair();
 }
 
-ATank* ATankPlayerController::GetTank() {
+ATank* ATankPlayerController::GetTank() const{
 
 	auto pawn = GetPawn();
 	if (pawn) {
@@ -33,15 +33,20 @@ ATank* ATankPlayerController::GetTank() {
 }
 
 void ATankPlayerController::AimTowardsCrosshair() {
-	FVector2D HitLocation;
+	FVector HitLocation;
 	if (GetSightRayLocation(HitLocation)) {
 		UE_LOG(LogTemp, Warning, TEXT("Hit location: %s"), *HitLocation.ToString());
 	}
 }
 
-bool ATankPlayerController::GetSightRayLocation(FVector2D& HitLocation) {
+bool ATankPlayerController::GetSightRayLocation(FVector& HitPosition) const{
 	int32 ViewportSizeX, ViewportSizeY;
 	GetViewportSize(ViewportSizeX, ViewportSizeY);
-	HitLocation = FVector2D(ViewportSizeX * CrossHairLocationX, ViewportSizeY * CrossHairLocationY);
-	return true;
+	FVector2D ScreenPosition = FVector2D(ViewportSizeX * CrossHairLocationX, ViewportSizeY * CrossHairLocationY);
+	return GetLookDirection(ScreenPosition, HitPosition);
+}
+
+bool ATankPlayerController::GetLookDirection(FVector2D ScreenPosition, FVector& LookDirection) const {
+	FVector CameraWorldLocation;
+	return DeprojectScreenPositionToWorld(ScreenPosition.X, ScreenPosition.Y, CameraWorldLocation, LookDirection);
 }
