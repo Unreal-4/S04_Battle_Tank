@@ -13,9 +13,10 @@ UCLASS()
 class BATTATANK_API ATankAIController : public AAIController
 {
 	GENERATED_BODY()
-public:
+private:
 		void BeginPlay() override;
-		ATank* getTank();
+		ATank* GetTank();
+		ATank* GetPlayer();
 	
 	
 };

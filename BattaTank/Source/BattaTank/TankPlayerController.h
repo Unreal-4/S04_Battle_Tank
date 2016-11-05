@@ -14,7 +14,7 @@ class BATTATANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
-public:
+private:
 	void BeginPlay() override;
 	ATank* getTank();
 	

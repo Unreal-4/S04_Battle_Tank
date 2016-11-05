@@ -18,5 +18,11 @@ void ATankPlayerController::BeginPlay() {
 
 ATank* ATankPlayerController::getTank() {
 
-	return Cast<ATank>(GetPawn());
+	auto pawn = GetPawn();
+	if (pawn) {
+		return Cast<ATank>(GetPawn());
+	}
+	else {
+		return nullptr;
+	}
 }
