@@ -13,12 +13,17 @@ UCLASS()
 class BATTATANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
+private:
+	UPROPERTY(EditAnywhere)
+	float CrossHairLocationX = 0.5;
+	UPROPERTY(EditAnywhere)
+	float CrossHairLocationY = 0.33333;
 	
 private:
 	void BeginPlay() override;
 	void Tick(float) override;
 	ATank* GetTank();
 	void AimTowardsCrosshair();
-	bool GetSightRayLocation(FVector&);
+	bool GetSightRayLocation(FVector2D&);
 	
 };
