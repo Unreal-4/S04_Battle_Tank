@@ -6,7 +6,7 @@
 
 void ATankPlayerController::BeginPlay() {
 	Super::BeginPlay();
-	ATank* player = getTank();
+	ATank* player = GetTank();
 	if (player) {
 		UE_LOG(LogTemp, Warning, TEXT("Tank Player Controller begin play %s"), *player->GetName());
 	}
@@ -18,9 +18,10 @@ void ATankPlayerController::BeginPlay() {
 
 void ATankPlayerController::Tick(float DeltaTime) {
 	UE_LOG(LogTemp, Warning, TEXT("Ticking in the tank player controller."));
+	AimTowardsCrosshair();
 }
 
-ATank* ATankPlayerController::getTank() {
+ATank* ATankPlayerController::GetTank() {
 
 	auto pawn = GetPawn();
 	if (pawn) {
@@ -29,4 +30,15 @@ ATank* ATankPlayerController::getTank() {
 	else {
 		return nullptr;
 	}
+}
+
+void ATankPlayerController::AimTowardsCrosshair() {
+	FVector HitLocation;
+	if (GetSightRayLocation(HitLocation)) {
+		UE_LOG(LogTemp, Warning, TEXT("Hit location: %s"), *HitLocation.ToString());
+	}
+}
+
+bool ATankPlayerController::GetSightRayLocation(FVector& HitLocation) {
+	return true;
 }
