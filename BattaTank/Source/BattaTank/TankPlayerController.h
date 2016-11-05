@@ -16,6 +16,7 @@ class BATTATANK_API ATankPlayerController : public APlayerController
 	
 private:
 	void BeginPlay() override;
+	void Tick(float) override;
 	ATank* getTank();
 	
 };

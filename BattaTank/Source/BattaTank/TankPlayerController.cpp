@@ -16,6 +16,10 @@ void ATankPlayerController::BeginPlay() {
 	
 }
 
+void ATankPlayerController::Tick(float DeltaTime) {
+	UE_LOG(LogTemp, Warning, TEXT("Ticking in the tank player controller."));
+}
+
 ATank* ATankPlayerController::getTank() {
 
 	auto pawn = GetPawn();
