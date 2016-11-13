@@ -18,6 +18,8 @@ private:
 	float CrossHairLocationX = 0.5;
 	UPROPERTY(EditAnywhere)
 	float CrossHairLocationY = 0.33333;
+	UPROPERTY(EditAnywhere)
+		float LineTraceRange = 1000000.0;
 	
 private:
 	void BeginPlay() override;
@@ -26,4 +28,5 @@ private:
 	void AimTowardsCrosshair();
 	bool GetSightRayLocation(FVector&) const;
 	bool GetLookDirection(FVector2D, FVector&) const;
+	bool GetVectorHitLoction(const FVector&, FVector&) const;
 };
