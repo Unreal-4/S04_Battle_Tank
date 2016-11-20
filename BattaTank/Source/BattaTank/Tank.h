@@ -13,6 +13,9 @@ class BATTATANK_API ATank : public APawn
 public:
 	void AimAt(FVector);
 
+	UFUNCTION(BluePrintCallable, Category=Setup)
+	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
+
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
@@ -27,8 +30,6 @@ private:
 	virtual void Tick( float DeltaSeconds ) override;
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
-
-	
+	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;	
 	
 };

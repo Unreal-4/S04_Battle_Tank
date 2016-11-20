@@ -22,5 +22,10 @@ public:
 	virtual void TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction ) override;
 
 	void AimAt(FVector);
+
+	void SetBarrelReference(UStaticMeshComponent* BarrelToSet) { Barrel = BarrelToSet; };
+
+private:
+	UStaticMeshComponent* Barrel;
 	
 };
