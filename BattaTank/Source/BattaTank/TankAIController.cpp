@@ -5,6 +5,7 @@
 
 
 void ATankAIController::Tick(float DeltaTime) {
+	Super::Tick(DeltaTime);
 	ATank* tank = GetTank();
 	ATank* playerTank = GetPlayer();
 	if (!tank || !playerTank) { return; }
