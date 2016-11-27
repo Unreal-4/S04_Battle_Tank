@@ -7,12 +7,6 @@
 void ATankPlayerController::BeginPlay() {
 	Super::BeginPlay();
 	ATank* player = GetTank();
-	if (player) {
-		UE_LOG(LogTemp, Warning, TEXT("Tank Player Controller begin play %s"), *player->GetName());
-	}
-	else {
-		UE_LOG(LogTemp, Warning, TEXT("Got null player tank."));
-	}
 	
 }
 

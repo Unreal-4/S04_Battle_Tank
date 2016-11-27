@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BattaTank.h"
+#include "TankBarrel.h"
 #include "Tank.h"
 
 
@@ -28,9 +29,9 @@ void ATank::Tick( float DeltaTime )
 }
 
 // Called to bind functionality to input
-void ATank::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+void ATank::SetupPlayerInputComponent(class UInputComponent* InputComp)
 {
-	Super::SetupPlayerInputComponent(InputComponent);
+	Super::SetupPlayerInputComponent(InputComp);
 
 }
 
@@ -38,7 +39,7 @@ void ATank::AimAt(FVector location) {
 	TankAimingComponent->AimAt(location, FiringSpeed);
 }
 
-void ATank::SetBarrelReference(UStaticMeshComponent* BarrelToSet) {
+void ATank::SetBarrelReference(UTankBarrel* BarrelToSet) {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
 
