@@ -27,5 +27,22 @@ void UTankAimingComponent::TickComponent( float DeltaTime, ELevelTick TickType, 
 
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float FiringSpeed) {
-	UE_LOG(LogTemp, Warning, TEXT("%s Aiming at %s from %s at firing speed %f"), *GetOwner()->GetName(),*HitLocation.ToString(), *Barrel->GetComponentLocation().ToString(), FiringSpeed)
+	FVector OutLaunchDirection;
+	if (
+		UGameplayStatics::SuggestProjectileVelocity
+		(
+			this,
+			OutLaunchDirection,
+			Barrel->GetSocketLocation(FName("FireStart")),
+			HitLocation,
+			FiringSpeed,
+			false,
+			0,
+			0,
+			ESuggestProjVelocityTraceOption::DoNotTrace
+		)
+		) {
+		OutLaunchDirection = OutLaunchDirection.GetSafeNormal();
+		UE_LOG(LogTemp, Warning, TEXT("%s Aiming at %s from %s at firing speed %f"), *GetOwner()->GetName(), *OutLaunchDirection.ToString(), *Barrel->GetComponentLocation().ToString(), FiringSpeed)
+	}	
 }
