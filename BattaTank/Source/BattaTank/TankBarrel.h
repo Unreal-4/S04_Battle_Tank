@@ -18,7 +18,7 @@ public:
 		float MinElevationDegree = 0.0f;
 
 public:
-		void Elevate(float ElevateDegree);
+		void Elevate(float RelativeDegree);
 	
 	
 };

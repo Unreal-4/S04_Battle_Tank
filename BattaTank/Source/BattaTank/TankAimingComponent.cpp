@@ -34,6 +34,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float FiringSpeed) {
 	}
 	else {
 		UE_LOG(LogTemp, Warning, TEXT("%f Solution not found."), Time)
+			AimTowards(FVector(0));
 	}
 }
 
@@ -42,5 +43,5 @@ void UTankAimingComponent::AimTowards(FVector AimDirection) {
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
-	Barrel->Elevate(5);
+	Barrel->Elevate(DeltaRotator.Pitch);
 }

@@ -5,6 +5,16 @@
 
 
 
-void UTankBarrel::Elevate(float ElevateDegree) {
-	
+void UTankBarrel::Elevate(float RelativeDegree) {
+	SetRelativeRotation(
+		FRotator(
+			FMath::Clamp<float>(
+				RelativeRotation.Pitch + FMath::Clamp<float>(RelativeDegree, -1, 1) * MaxPerSecondDegree * GetWorld()->GetDeltaSeconds(),
+				MinElevationDegree,
+				MaxElevationDegree
+			),
+			0,
+			0
+		)
+	);
 }
