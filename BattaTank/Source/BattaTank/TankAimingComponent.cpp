@@ -22,13 +22,17 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float FiringSpeed) {
 			Barrel->GetSocketLocation(FName("FireStart")),
 			HitLocation,
 			FiringSpeed,
+			0,
+			0,
+			0,
 			ESuggestProjVelocityTraceOption::DoNotTrace
 		)
 		) {
 		UE_LOG(LogTemp, Warning, TEXT("%f Solution found."), Time)
 		OutLaunchDirection = OutLaunchDirection.GetSafeNormal();
 		AimTowards(OutLaunchDirection);
-	} {
+	}
+	else {
 		UE_LOG(LogTemp, Warning, TEXT("%f Solution not found."), Time)
 	}
 }
