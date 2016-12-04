@@ -6,5 +6,5 @@
 
 
 void UTankBarrel::Elevate(float ElevateDegree) {
-	UE_LOG(LogTemp, Warning, TEXT("UTankBarrel::Elevate"))
+	
 }

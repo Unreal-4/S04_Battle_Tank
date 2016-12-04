@@ -13,6 +13,7 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float FiringSpeed) {
 	FVector OutLaunchDirection;
+	auto Time = GetWorld()->GetTimeSeconds();
 	if (
 		UGameplayStatics::SuggestProjectileVelocity
 		(
@@ -24,9 +25,12 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float FiringSpeed) {
 			ESuggestProjVelocityTraceOption::DoNotTrace
 		)
 		) {
+		UE_LOG(LogTemp, Warning, TEXT("%f Solution found."), Time)
 		OutLaunchDirection = OutLaunchDirection.GetSafeNormal();
 		AimTowards(OutLaunchDirection);
-	}	
+	} {
+		UE_LOG(LogTemp, Warning, TEXT("%f Solution not found."), Time)
+	}
 }
 
 
