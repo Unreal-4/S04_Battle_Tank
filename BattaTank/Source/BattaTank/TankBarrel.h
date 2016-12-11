@@ -5,7 +5,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "TankBarrel.generated.h"
 
-UCLASS(meta = (BlueprintSpawnableComponent), HideCategories(Collision))
+UCLASS(meta = (BlueprintSpawnableComponent))//, HideCategories(Collision))
 class BATTATANK_API UTankBarrel : public UStaticMeshComponent
 {
 	GENERATED_BODY()
@@ -18,7 +18,5 @@ public:
 		float MinElevationDegree = 0.0f;
 
 public:
-		void Elevate(float RelativeDegree);
-	
-	
+		void Elevate(float RelativeDegree);	
 };
