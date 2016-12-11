@@ -29,12 +29,10 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float FiringSpeed) {
 			ESuggestProjVelocityTraceOption::DoNotTrace
 		)
 		) {
-		UE_LOG(LogTemp, Warning, TEXT("%f Solution found."), Time)
 		OutLaunchDirection = OutLaunchDirection.GetSafeNormal();
 		AimTowards(OutLaunchDirection);
 	}
 	else {
-		UE_LOG(LogTemp, Warning, TEXT("%f Solution not found."), Time)
 			AimTowards(FVector(0));
 	}
 }
