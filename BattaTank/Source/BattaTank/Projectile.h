@@ -11,15 +11,10 @@ class BATTATANK_API AProjectile : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AProjectile();
+	void LaunchProjectile(float LaunchSpeed);
 
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-	
-	// Called every frame
-	virtual void Tick( float DeltaSeconds ) override;
-
-	
+protected:
+	UProjectileMovementComponent* ProjectilesMovementComponent = nullptr;
 	
 };
