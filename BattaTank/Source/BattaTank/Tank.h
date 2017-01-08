@@ -29,11 +29,15 @@ public:
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
-	UPROPERTY(EditAnywhere, Category=Firing)
+	UPROPERTY(EditDefaultsOnly, Category=Firing)
 	float FiringSpeed = 1000.0f;
 
-	UPROPERTY(EditAnyWhere, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	float ReloadTime = 3;
+
 private:
 	// Sets default values for this pawn's properties
 	ATank();
@@ -45,8 +49,6 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent*) override;	
 
 	UTankBarrel* TankBarrel = nullptr;
-
-	float ReloadTime = 3;
 
 	double LastFireTime = 0;
 	
