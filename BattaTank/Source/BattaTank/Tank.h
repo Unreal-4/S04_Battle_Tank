@@ -45,5 +45,9 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent*) override;	
 
 	UTankBarrel* TankBarrel = nullptr;
+
+	float ReloadTime = 3;
+
+	double LastFireTime = 0;
 	
 };

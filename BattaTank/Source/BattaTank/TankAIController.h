@@ -14,8 +14,4 @@ class BATTATANK_API ATankAIController : public AAIController
 private:
 		void BeginPlay() override;
 		void Tick(float) override;
-		ATank* GetTank();
-		ATank* GetPlayer();
-	
-	
 };
